@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "date": "2026-08-02T19:07:52.475Z",
+    "node": "v24.18.0",
+    "warmup": 200,
+    "iterations": 1000,
+    "order": "interleaved",
+    "files": [
+      {
+        "name": "medium-icons.svg",
+        "path": "/Users/peter/projects/vite-svgx-plugin/bench/fixtures/medium-icons.svg"
+      },
+      {
+        "name": "small-icon.svg",
+        "path": "/Users/peter/projects/vite-svgx-plugin/bench/fixtures/small-icon.svg"
+      },
+      {
+        "name": "stress-heavy.svg",
+        "path": "/Users/peter/projects/vite-svgx-plugin/bench/fixtures/stress-heavy.svg"
+      },
+      {
+        "name": "tiny.svg",
+        "path": "/Users/peter/projects/vite-svgx-plugin/bench/fixtures/tiny.svg"
+      }
+    ]
+  },
+  "results": {
+    "svgx (svgo)": {
+      "medium-icons.svg": {
+        "mean": 0.856,
+        "median": 0.825,
+        "min": 0.72,
+        "max": 2.894,
+        "p95": 1.044
+      },
+      "small-icon.svg": {
+        "mean": 0.165,
+        "median": 0.154,
+        "min": 0.14,
+        "max": 0.819,
+        "p95": 0.208
+      },
+      "stress-heavy.svg": {
+        "mean": 6.462,
+        "median": 6.209,
+        "min": 5.737,
+        "max": 12.155,
+        "p95": 8.476
+      },
+      "tiny.svg": {
+        "mean": 0.078,
+        "median": 0.071,
+        "min": 0.056,
+        "max": 0.52,
+        "p95": 0.116
+      }
+    },
+    "svgx (no svgo)": {
+      "medium-icons.svg": {
+        "mean": 0.09,
+        "median": 0.086,
+        "min": 0.076,
+        "max": 0.254,
+        "p95": 0.109
+      },
+      "small-icon.svg": {
+        "mean": 0.022,
+        "median": 0.021,
+        "min": 0.018,
+        "max": 0.075,
+        "p95": 0.027
+      },
+      "stress-heavy.svg": {
+        "mean": 0.851,
+        "median": 0.629,
+        "min": 0.545,
+        "max": 3.729,
+        "p95": 2.958
+      },
+      "tiny.svg": {
+        "mean": 0.022,
+        "median": 0.021,
+        "min": 0.017,
+        "max": 0.07,
+        "p95": 0.031
+      }
+    },
+    "svgr (jsx only)": {
+      "medium-icons.svg": {
+        "mean": 1.036,
+        "median": 0.814,
+        "min": 0.7,
+        "max": 17.549,
+        "p95": 2.571
+      },
+      "small-icon.svg": {
+        "mean": 0.385,
+        "median": 0.328,
+        "min": 0.286,
+        "max": 9.793,
+        "p95": 0.481
+      },
+      "stress-heavy.svg": {
+        "mean": 6.465,
+        "median": 5.427,
+        "min": 4.649,
+        "max": 37.838,
+        "p95": 8.529
+      },
+      "tiny.svg": {
+        "mean": 0.399,
+        "median": 0.327,
+        "min": 0.282,
+        "max": 16.122,
+        "p95": 0.564
+      }
+    },
+    "svgr (svgo)": {
+      "medium-icons.svg": {
+        "mean": 1.691,
+        "median": 1.558,
+        "min": 1.332,
+        "max": 18.172,
+        "p95": 2.488
+      },
+      "small-icon.svg": {
+        "mean": 0.506,
+        "median": 0.467,
+        "min": 0.411,
+        "max": 2.479,
+        "p95": 0.655
+      },
+      "stress-heavy.svg": {
+        "mean": 10.843,
+        "median": 10.078,
+        "min": 9.115,
+        "max": 44.968,
+        "p95": 12.858
+      },
+      "tiny.svg": {
+        "mean": 0.43,
+        "median": 0.381,
+        "min": 0.327,
+        "max": 3.141,
+        "p95": 0.634
+      }
+    }
+  },
+  "summary": {
+    "svgx (svgo)": {
+      "meanOfMeans": 1.89,
+      "meanOfMedians": 1.815
+    },
+    "svgx (no svgo)": {
+      "meanOfMeans": 0.246,
+      "meanOfMedians": 0.189
+    },
+    "svgr (jsx only)": {
+      "meanOfMeans": 2.071,
+      "meanOfMedians": 1.724
+    },
+    "svgr (svgo)": {
+      "meanOfMeans": 3.367,
+      "meanOfMedians": 3.121
+    }
+  },
+  "speedup": {
+    "no svgo": {
+      "medium-icons.svg": 9.5,
+      "small-icon.svg": 15.6,
+      "stress-heavy.svg": 8.6,
+      "tiny.svg": 15.6
+    },
+    "svgo": {
+      "medium-icons.svg": 1.9,
+      "small-icon.svg": 3,
+      "stress-heavy.svg": 1.6,
+      "tiny.svg": 5.4
+    }
+  }
+}

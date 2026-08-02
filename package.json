@@ -1,0 +1,36 @@
+{
+  "name": "vite-svgx-plugin",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./client": "./src/client.d.ts"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.ts",
+    "bench": "node --expose-gc bench/run.ts"
+  },
+  "overrides": {
+    "@svgr/plugin-svgo": {
+      "svgo": "$svgo"
+    }
+  },
+  "peerDependencies": {
+    "vite": ">=7"
+  },
+  "peerDependenciesMeta": {
+    "svgo": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "svgo": "^4.0.2",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.0",
+    "vite-plugin-svgr": "^5.2.0"
+  }
+}

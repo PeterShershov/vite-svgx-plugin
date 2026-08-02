@@ -1,0 +1,281 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <filter id="complexFilter1" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur1" />
+      <feOffset dx="4" dy="4" result="offsetblur" in="blur1" />
+      <feComponentTransfer in="offsetblur" result="ctransfer">
+        <feFuncR type="table" tableValues="0 0.2 0.4 0.6 0.8 1" />
+        <feFuncG type="discrete" tableValues="0 0.5 1" />
+        <feFuncB type="linear" slope="0.7" intercept="0.1" />
+        <feFuncA type="linear" slope="0.7" />
+      </feComponentTransfer>
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="5" seed="42" stitchTiles="stitch" result="noise1" />
+      <feDisplacementMap in="ctransfer" in2="noise1" scale="20" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+      <feConvolveMatrix order="3" kernelMatrix="1 0 -1 2 0 -2 1 0 -1" divisor="1" bias="0.5" targetX="1" targetY="1" edgeMode="duplicate" preserveAlpha="true" result="edges" in="displaced" />
+      <feMorphology operator="dilate" radius="2" in="edges" result="dilated" />
+      <feSpecularLighting surfaceScale="5" specularConstant="0.75" specularExponent="20" lighting-color="#ffffff" result="specular" in="dilated">
+        <fePointLight x="250" y="150" z="200" />
+      </feSpecularLighting>
+      <feDiffuseLighting surfaceScale="4" diffuseConstant="0.8" lighting-color="#ffe0b0" result="diffuse" in="blur1">
+        <feDistantLight azimuth="235" elevation="40" />
+      </feDiffuseLighting>
+      <feComposite in="specular" in2="diffuse" operator="arithmetic" k1="0.5" k2="0.3" k3="0.2" k4="0" result="lit" />
+      <feMerge result="merged">
+        <feMergeNode in="lit" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 1 0" in="merged" result="gray" />
+      <feColorMatrix type="hueRotate" values="90" in="gray" result="hued" />
+      <feColorMatrix type="saturate" values="1.5" in="hued" />
+    </filter>
+
+    <filter id="complexFilter2" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="3 5" in="SourceGraphic" result="blur2" />
+      <feTurbulence type="turbulence" baseFrequency="0.05 0.08" numOctaves="3" seed="7" result="turb" />
+      <feDisplacementMap in="blur2" in2="turb" scale="15" xChannelSelector="R" yChannelSelector="B" result="warped" />
+      <feFlood flood-color="#ff6600" flood-opacity="0.3" result="flood1" />
+      <feComposite in="flood1" in2="warped" operator="in" result="colored" />
+      <feBlend in="warped" in2="colored" mode="overlay" result="blended" />
+      <feConvolveMatrix order="5" kernelMatrix="0 0 -1 0 0 0 -1 4 -1 0 -1 4 8 4 -1 0 -1 4 -1 0 0 0 -1 0 0" divisor="4" bias="0" edgeMode="wrap" in="blended" />
+    </filter>
+
+    <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" in="SourceGraphic" result="glow" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.2 0 0 0 0 0.6 0 0 0 0 1 0 0 0 1 0" in="glow" result="colored-glow" />
+      <feMerge>
+        <feMergeNode in="colored-glow" />
+        <feMergeNode in="colored-glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="linGrad1" x1="0%" y1="0%" x2="100%" y2="100%" gradientUnits="objectBoundingBox" spreadMethod="pad">
+      <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ff4400;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#00ffff;stop-opacity:0.5" />
+      <stop offset="75%" style="stop-color:#44ff00;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ffff00;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="linGrad2" x1="100%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse" gradientTransform="rotate(30)" spreadMethod="reflect">
+      <stop offset="0%" stop-color="#1a0033" stop-opacity="1" />
+      <stop offset="33%" stop-color="#330066" stop-opacity="0.9" />
+      <stop offset="66%" stop-color="#660099" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#9900cc" stop-opacity="1" />
+    </linearGradient>
+
+    <linearGradient id="linGrad3" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#e74c3c" />
+      <stop offset="20%" stop-color="#e67e22" />
+      <stop offset="40%" stop-color="#f1c40f" />
+      <stop offset="60%" stop-color="#2ecc71" />
+      <stop offset="80%" stop-color="#3498db" />
+      <stop offset="100%" stop-color="#9b59b6" />
+    </linearGradient>
+
+    <radialGradient id="radGrad1" cx="50%" cy="50%" r="50%" fx="30%" fy="30%" gradientUnits="objectBoundingBox" spreadMethod="pad">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#cccccc;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="radGrad2" cx="25%" cy="25%" r="70%" fx="15%" fy="15%" spreadMethod="reflect">
+      <stop offset="0%" stop-color="#ff0" stop-opacity="1" />
+      <stop offset="50%" stop-color="#f0f" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0ff" stop-opacity="0.2" />
+    </radialGradient>
+
+    <radialGradient id="radGrad3" cx="75%" cy="75%" r="60%">
+      <stop offset="0%" stop-color="#ff4444" />
+      <stop offset="100%" stop-color="#440000" />
+    </radialGradient>
+
+    <pattern id="pat1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <rect width="20" height="20" fill="#111" />
+      <circle cx="10" cy="10" r="4" fill="url(#radGrad2)" opacity="0.5" />
+      <line x1="0" y1="0" x2="20" y2="20" stroke="#333" stroke-width="0.5" />
+    </pattern>
+
+    <pattern id="pat2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="scale(0.8) rotate(-10)">
+      <rect width="40" height="40" fill="none" />
+      <path d="M0 20 L20 0 L40 20 L20 40 Z" fill="none" stroke="url(#linGrad3)" stroke-width="1" opacity="0.3" />
+      <circle cx="20" cy="20" r="3" fill="#fff" opacity="0.2" />
+    </pattern>
+
+    <clipPath id="clip1">
+      <circle cx="500" cy="500" r="400" />
+    </clipPath>
+
+    <clipPath id="clip2">
+      <path d="M200,100 L800,100 L900,500 L800,900 L200,900 L100,500 Z" />
+    </clipPath>
+
+    <clipPath id="clip3">
+      <polygon points="500,50 650,250 900,300 700,500 750,750 500,650 250,750 300,500 100,300 350,250" />
+    </clipPath>
+
+    <mask id="mask1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1000" height="1000" style="mask-type:alpha">
+      <radialGradient id="maskGrad">
+        <stop offset="0%" stop-color="white" />
+        <stop offset="100%" stop-color="black" />
+      </radialGradient>
+      <rect width="1000" height="1000" fill="url(#maskGrad)" />
+    </mask>
+
+    <mask id="mask2" maskUnits="objectBoundingBox" style="mask-type:luminance">
+      <linearGradient id="maskGrad2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="white" />
+        <stop offset="50%" stop-color="gray" />
+        <stop offset="100%" stop-color="white" />
+      </linearGradient>
+      <rect x="0" y="0" width="1" height="1" fill="url(#maskGrad2)" />
+    </mask>
+
+    <symbol id="sym-star" viewBox="0 0 100 100" overflow="visible" preserveAspectRatio="xMidYMid meet">
+      <polygon points="50,5 63,38 98,38 69,59 79,94 50,72 21,94 31,59 2,38 37,38" fill="url(#linGrad3)" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
+    </symbol>
+
+    <symbol id="sym-hexagon" viewBox="0 0 100 100">
+      <polygon points="50,3 93,25 93,75 50,97 7,75 7,25" fill="none" stroke="url(#linGrad2)" stroke-width="3" stroke-linejoin="bevel" stroke-dasharray="5,3,8,3" />
+    </symbol>
+
+    <marker id="marker-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="url(#linGrad1)" stroke="none" />
+    </marker>
+
+    <marker id="marker-dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <circle cx="5" cy="5" r="4" fill="url(#radGrad3)" stroke="#fff" stroke-width="0.5" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#pat1)" />
+  <rect width="100%" height="100%" fill="url(#linGrad2)" opacity="0.3" />
+
+  <g clip-path="url(#clip1)" filter="url(#complexFilter1)" mask="url(#mask1)">
+    <g transform="translate(500, 500) rotate(45) scale(0.9)">
+      <path d="M-400,-400 C-300,-500 -200,-300 -100,-400 S100,-500 200,-400 S400,-300 400,-400 L400,400 C300,500 200,300 100,400 S-100,500 -200,400 S-400,300 -400,400 Z"
+            fill="url(#linGrad1)" stroke="url(#radGrad1)" stroke-width="15" stroke-dasharray="10,5,2,5" stroke-dashoffset="3" stroke-linecap="round" stroke-linejoin="bevel" paint-order="stroke fill markers" vector-effect="non-scaling-stroke" shape-rendering="geometricPrecision" />
+
+      <g opacity="0.6" transform="rotate(-10)" filter="url(#glowFilter)">
+        <circle cx="-200" cy="-200" r="150" fill="rgba(255,0,0,0.5)" filter="url(#complexFilter1)" data-benchmark="heavy-node" pointer-events="visiblePainted" color-interpolation="auto" />
+        <rect x="50" y="50" width="300" height="300" rx="50" ry="30" fill="url(#radGrad1)" stroke="url(#linGrad2)" stroke-width="4" transform="skewX(20) skewY(-5)" clip-path="url(#clip2)" image-rendering="optimizeQuality" />
+        <ellipse cx="0" cy="0" rx="200" ry="100" fill="url(#pat2)" stroke="#fff" stroke-width="2" stroke-dasharray="8 4 2 4" stroke-opacity="0.7" fill-opacity="0.4" />
+
+        <path d="M-300,0 Q-250,-150 -150,-200 T0,-250 T150,-200 T250,-100 T300,0 T250,100 T150,200 T0,250 T-150,200 T-250,100 Z"
+              fill="none" stroke="url(#linGrad3)" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="8" marker-start="url(#marker-dot)" marker-mid="url(#marker-dot)" marker-end="url(#marker-arrow)" />
+
+        <polygon points="-100,-50 0,-150 100,-50 50,50 -50,50" fill="url(#radGrad2)" stroke="url(#linGrad1)" stroke-width="2.5" stroke-linejoin="round" fill-rule="evenodd" clip-rule="nonzero" opacity="0.7" />
+        <polyline points="-200,100 -150,50 -100,120 -50,30 0,110 50,20 100,130 150,40 200,100" fill="none" stroke="url(#linGrad3)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="12 6" />
+      </g>
+    </g>
+
+    <g transform="translate(500, 500)" clip-path="url(#clip3)">
+      <path d="M0,-350 C193,-350 350,-193 350,0 S193,350 0,350 S-350,193 -350,0 S-193,-350 0,-350 Z M0,-250 C-138,-250 -250,-138 -250,0 S-138,250 0,250 S250,138 250,0 S138,-250 0,-250 Z"
+            fill="url(#radGrad2)" fill-rule="evenodd" stroke="url(#linGrad1)" stroke-width="5" filter="url(#complexFilter2)" opacity="0.5" />
+
+      <path d="M-300,-300 A200,200 0 0,1 300,-300 A200,200 0 0,1 300,300 A200,200 0 0,1 -300,300 A200,200 0 0,1 -300,-300 Z"
+            fill="none" stroke="url(#linGrad2)" stroke-width="2" stroke-dasharray="20 10 5 10" opacity="0.4" transform="rotate(22.5)" />
+
+      <line x1="-400" y1="0" x2="400" y2="0" stroke="#555" stroke-width="1" stroke-dasharray="2 8" opacity="0.5" marker-start="url(#marker-dot)" marker-end="url(#marker-arrow)" />
+      <line x1="0" y1="-400" x2="0" y2="400" stroke="#555" stroke-width="1" stroke-dasharray="2 8" opacity="0.5" marker-start="url(#marker-dot)" marker-end="url(#marker-arrow)" />
+    </g>
+
+    <g id="noise-layer" filter="url(#complexFilter2)" mask="url(#mask2)">
+      <path d="M100,100 L110,120 L120,100 Z" fill="url(#linGrad3)" stroke="#fff" stroke-width="0.5" transform="translate(10,10) scale(1.5)" opacity="0.8" />
+      <path d="M150,150 L160,170 L170,150 Z" fill="url(#radGrad2)" stroke="#fff" stroke-width="0.5" transform="translate(20,20) rotate(10)" opacity="0.8" />
+      <path d="M200,200 L210,220 L220,200 Z" fill="url(#linGrad1)" stroke="#fff" stroke-width="0.5" transform="translate(30,30) skewX(15)" opacity="0.8" />
+      <path d="M250,250 L260,270 L270,250 Z" fill="url(#radGrad3)" stroke="#fff" stroke-width="0.5" transform="translate(40,40) rotate(-20) scale(1.2)" opacity="0.8" />
+      <path d="M300,300 L310,320 L320,300 Z" fill="url(#linGrad2)" stroke="#fff" stroke-width="0.5" transform="translate(50,50) skewY(-10)" opacity="0.8" />
+    </g>
+  </g>
+
+  <g transform="translate(500,500)">
+    <use xlink:href="#sym-star" x="-380" y="-380" width="60" height="60" opacity="0.9" />
+    <use xlink:href="#sym-star" x="320" y="-380" width="60" height="60" opacity="0.9" transform="rotate(36, 350, -350)" />
+    <use xlink:href="#sym-star" x="-380" y="320" width="60" height="60" opacity="0.9" transform="rotate(-36, -350, 350)" />
+    <use xlink:href="#sym-star" x="320" y="320" width="60" height="60" opacity="0.9" transform="rotate(72, 350, 350)" />
+    <use xlink:href="#sym-hexagon" x="-40" y="-420" width="80" height="80" opacity="0.6" />
+    <use xlink:href="#sym-hexagon" x="-40" y="340" width="80" height="80" opacity="0.6" transform="rotate(30, 0, 380)" />
+    <use xlink:href="#sym-hexagon" x="-420" y="-40" width="80" height="80" opacity="0.6" transform="rotate(60, -380, 0)" />
+    <use xlink:href="#sym-hexagon" x="340" y="-40" width="80" height="80" opacity="0.6" transform="rotate(-60, 380, 0)" />
+  </g>
+
+  <g transform="translate(500, 200)" filter="url(#glowFilter)">
+    <path d="M-250,0 C-250,-80 -180,-150 -100,-150 C-50,-150 -10,-120 0,-80 C10,-120 50,-150 100,-150 C180,-150 250,-80 250,0 C250,150 0,280 0,280 C0,280 -250,150 -250,0 Z"
+          fill="url(#radGrad3)" stroke="url(#linGrad1)" stroke-width="4" stroke-linejoin="round" opacity="0.6" filter="url(#complexFilter1)" />
+  </g>
+
+  <g id="spiral-group" transform="translate(500, 500)">
+    <path d="M0,0 C20,0 20,20 0,20 C-30,20 -30,-30 0,-30 C50,-30 50,50 0,50 C-70,50 -70,-70 0,-70 C90,-70 90,90 0,90 C-110,90 -110,-110 0,-110 C130,-110 130,130 0,130 C-150,130 -150,-150 0,-150 C170,-150 170,170 0,170 C-190,170 -190,-190 0,-190 C210,-190 210,210 0,210 C-230,210 -230,-230 0,-230 C250,-230 250,250 0,250 C-270,250 -270,-270 0,-270 C290,-270 290,290 0,290"
+          fill="none" stroke="url(#linGrad3)" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 8" opacity="0.5" marker-start="url(#marker-dot)" marker-end="url(#marker-arrow)" />
+  </g>
+
+  <g id="grid-overlay" opacity="0.15">
+    <line x1="100" y1="0" x2="100" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="200" y1="0" x2="200" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="300" y1="0" x2="300" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="400" y1="0" x2="400" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="500" y1="0" x2="500" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="600" y1="0" x2="600" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="700" y1="0" x2="700" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="800" y1="0" x2="800" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="900" y1="0" x2="900" y2="1000" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="100" x2="1000" y2="100" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="200" x2="1000" y2="200" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="300" x2="1000" y2="300" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="400" x2="1000" y2="400" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="500" x2="1000" y2="500" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="600" x2="1000" y2="600" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="700" x2="1000" y2="700" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="800" x2="1000" y2="800" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+    <line x1="0" y1="900" x2="1000" y2="900" stroke="#fff" stroke-width="0.5" stroke-dasharray="1 9" />
+  </g>
+
+  <g id="concentric-rings" transform="translate(500,500)" opacity="0.25">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="url(#linGrad1)" stroke-width="1" stroke-dasharray="3 5" />
+    <circle cx="0" cy="0" r="100" fill="none" stroke="url(#linGrad2)" stroke-width="1" stroke-dasharray="5 5" />
+    <circle cx="0" cy="0" r="150" fill="none" stroke="url(#linGrad3)" stroke-width="1" stroke-dasharray="7 5" />
+    <circle cx="0" cy="0" r="200" fill="none" stroke="url(#linGrad1)" stroke-width="1" stroke-dasharray="9 5" />
+    <circle cx="0" cy="0" r="250" fill="none" stroke="url(#linGrad2)" stroke-width="1" stroke-dasharray="11 5" />
+    <circle cx="0" cy="0" r="300" fill="none" stroke="url(#linGrad3)" stroke-width="1" stroke-dasharray="13 5" />
+    <circle cx="0" cy="0" r="350" fill="none" stroke="url(#linGrad1)" stroke-width="1" stroke-dasharray="15 5" />
+    <circle cx="0" cy="0" r="400" fill="none" stroke="url(#linGrad2)" stroke-width="1" stroke-dasharray="17 5" />
+    <circle cx="0" cy="0" r="450" fill="none" stroke="url(#linGrad3)" stroke-width="1" stroke-dasharray="19 5" />
+  </g>
+
+  <g id="data-labels" font-family="monospace" font-size="11" fill="#888" text-rendering="geometricPrecision">
+    <text x="105" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X100</text>
+    <text x="205" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X200</text>
+    <text x="305" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X300</text>
+    <text x="405" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X400</text>
+    <text x="505" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X500</text>
+    <text x="605" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X600</text>
+    <text x="705" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X700</text>
+    <text x="805" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X800</text>
+    <text x="905" y="15" text-anchor="start" letter-spacing="1" dominant-baseline="hanging">X900</text>
+    <text x="5" y="105" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y100</text>
+    <text x="5" y="205" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y200</text>
+    <text x="5" y="305" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y300</text>
+    <text x="5" y="405" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y400</text>
+    <text x="5" y="505" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y500</text>
+    <text x="5" y="605" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y600</text>
+    <text x="5" y="705" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y700</text>
+    <text x="5" y="805" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y800</text>
+    <text x="5" y="905" text-anchor="start" writing-mode="tb" glyph-orientation-vertical="0">Y900</text>
+  </g>
+
+  <g id="decorative-paths" opacity="0.4">
+    <path d="M50,500 Q125,100 250,450 T450,400 T650,350 T850,500 T650,650 T450,600 T250,550 T50,500 Z" fill="none" stroke="url(#linGrad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M500,50 Q900,125 550,250 T600,450 T650,650 T500,850 T350,650 T400,450 T450,250 T500,50 Z" fill="none" stroke="url(#linGrad2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M50,50 C200,200 300,100 500,250 S700,100 950,50 C800,200 900,300 750,500 S900,700 950,950 C800,800 700,900 500,750 S300,900 50,950 C200,800 100,700 250,500 S100,300 50,50 Z" fill="url(#pat2)" stroke="url(#linGrad3)" stroke-width="2" fill-opacity="0.1" stroke-dasharray="15 5 5 5" />
+  </g>
+
+  <g id="bottom-text" transform="translate(500, 920)">
+    <text x="0" y="0" font-size="40" fill="url(#linGrad1)" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-weight="bold" letter-spacing="10" text-decoration="none" dominant-baseline="central" style="filter:drop-shadow(2px 2px 4px rgba(0,0,0,0.8))">
+      BENCHMARK STRESS TEST
+    </text>
+    <text x="0" y="40" font-size="14" fill="#666" font-family="monospace" text-anchor="middle" letter-spacing="4" dominant-baseline="central" font-style="italic" text-rendering="optimizeLegibility">
+      &#x2014; vite-svgx-plugin vs vite-react-svg vs vite-plugin-svgr &#x2014;
+    </text>
+  </g>
+</svg>
