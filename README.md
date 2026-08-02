@@ -1,10 +1,10 @@
+[![CI](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml)
+
 <p align="center">
   <img src="./svgx-logo.svg" alt="vite-svgx-plugin" width="200" />
 </p>
 
 # vite-svgx-plugin
-
-[![CI](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/PeterShershov/vite-svgx-plugin/actions/workflows/ci.yml)
 
 Import SVG files as React components in Vite with zero runtime overhead.
 
