@@ -3,8 +3,8 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    /* No `declarationMap`/`sourceMap`: the package ships `dist` without `src`,
+       so the maps would point at sources that aren't there. */
     "outDir": "dist",
     "rootDir": "src",
     /* Source imports carry `.ts` extensions; rewrite them to `.js` in the JS

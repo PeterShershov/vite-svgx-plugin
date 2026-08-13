@@ -3,7 +3,7 @@
  * `tests/types.test.ts`. Mirrors the setups reported broken upstream:
  * pd4d10/vite-plugin-svgr#150, #128, #118, #111, #57, #51, #44.
  */
-/// <reference path="../../src/client.d.ts" />
+/// <reference path="../../client.d.ts" />
 import type { ComponentType, ReactNode, SVGProps } from "react";
 import { forwardRef, memo } from "react";
 // No `icon.svg` on disk on purpose: the ambient wildcard module is the unit

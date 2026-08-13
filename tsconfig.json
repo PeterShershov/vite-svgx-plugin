@@ -23,6 +23,6 @@
     "noUncheckedSideEffectImports": true
   },
   /* tests/types has its own compile — see tests/types.test.ts */
-  "include": ["src", "tests"],
+  "include": ["src", "tests", "client.d.ts"],
   "exclude": ["tests/types"]
 }
