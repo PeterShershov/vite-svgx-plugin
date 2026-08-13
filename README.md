@@ -25,7 +25,17 @@ import svgx from "vite-svgx-plugin";
 export default defineConfig({ plugins: [svgx()] });
 ```
 
-Each imported SVG is typed as `(props: SVGProps<SVGSVGElement>) => ReactNode` - no extra setup needed. The ambient type declaration for `*.svg?react` is bundled and picked up automatically when TypeScript loads the plugin.
+Each imported SVG is typed as `(props: SVGProps<SVGSVGElement>) => ReactNode`. Pull in the ambient declaration for `*.svg?react` the same way you would `vite/client` - either in a `.d.ts` file:
+
+```ts
+/// <reference types="vite-svgx-plugin/client" />
+```
+
+or via `compilerOptions.types` in your `tsconfig.json`:
+
+```json
+{ "compilerOptions": { "types": ["vite-svgx-plugin/client"] } }
+```
 
 ## Options
 

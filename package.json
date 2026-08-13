@@ -1,15 +1,54 @@
 {
   "name": "vite-svgx-plugin",
-  "private": true,
   "version": "1.0.0",
+  "description": "Import SVG files as React components in Vite with zero runtime overhead.",
+  "license": "MIT",
+  "author": "Peter Shershov",
+  "homepage": "https://github.com/PeterShershov/vite-svgx-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterShershov/vite-svgx-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PeterShershov/vite-svgx-plugin/issues"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "svg",
+    "svgr",
+    "react",
+    "jsx",
+    "svgo",
+    "icons"
+  ],
   "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./client": "./src/client.d.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./src/client.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "test": "node --test tests/*.test.ts",
-    "bench": "node --expose-gc bench/run.ts"
+    "bench": "node --expose-gc bench/run.ts",
+    "prepack": "npm run build"
   },
   "overrides": {
     "@svgr/plugin-svgo": {

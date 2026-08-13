@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    /* Source imports carry `.ts` extensions; rewrite them to `.js` in the JS
+       emit. Declaration files keep `.ts` — TypeScript resolves those to the
+       neighbouring `.d.ts`. */
+    "rewriteRelativeImportExtensions": true
+  },
+  "include": ["src"]
+}
